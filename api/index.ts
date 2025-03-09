@@ -11,4 +11,8 @@ app.get('/', (c) => {
   return c.json({ message: 'Hello Hono!' })
 })
 
+app.get('/hello', (c) => {
+  return c.json({ message: 'Hello World!' })
+})
+
 export default handle(app)
