@@ -11,7 +11,7 @@ app.get('/hello', (c) => {
   return c.json({ message: 'Hello World!' })
 })
 
-app.get('/', (c) => {
+app.get('hono', (c) => {
   return c.json({ message: 'Hello Hono!' })
 })
 
