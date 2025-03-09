@@ -7,11 +7,7 @@ export const config = {
 
 const app = new Hono().basePath('/api')
 
-app.get('/hello', (c) => {
-  return c.json({ message: 'Hello World!' })
-})
-
-app.get('/hono', (c) => {
+app.get('/', (c) => {
   return c.json({ message: 'Hello Hono!' })
 })
 
