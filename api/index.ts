@@ -12,6 +12,17 @@ app.get('/crons', (c) => {
   if (Authorization !== `Bearer ${process.env.CRON_SECRET}`) {
     return c.json({ message: 'Unauthorized' }, 401)
   }
+  if (process.env.WEBHOOK_URL) {
+    fetch(process.env.WEBHOOK_URL, {
+      method: 'POST',
+      body: JSON.stringify({ content: 'Hello Hono!' }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  } else {
+    return c.json({ message: 'CRON_URL is not defined' }, 500)
+  }
   return c.json({ message: 'Hello Hono!' })
 })
 
