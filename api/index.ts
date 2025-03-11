@@ -20,7 +20,8 @@ app.get('/crons', (c) => {
         'Content-Type': 'application/json'
       }
     })
-    res.then((r) => {
+    res.then(async (r) => {
+      console.log(await r.json())
       if (!r.ok) {
         return c.json({ message: 'Failed to send' }, 500)
       }
