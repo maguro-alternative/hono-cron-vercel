@@ -7,7 +7,7 @@ export const config = {
 
 const app = new Hono().basePath('/api')
 
-app.get('/crons', (c) => {
+app.get('/cron', (c) => {
   const Authorization = c.req.header('Authorization')
   if (Authorization !== `Bearer ${process.env.CRON_SECRET}`) {
     return c.json({ message: 'Unauthorized' }, 401)
