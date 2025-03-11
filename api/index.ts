@@ -13,11 +13,16 @@ app.get('/crons', (c) => {
     return c.json({ message: 'Unauthorized' }, 401)
   }
   if (process.env.WEBHOOK_URL) {
-    fetch(process.env.WEBHOOK_URL, {
+    const res = fetch(process.env.WEBHOOK_URL, {
       method: 'POST',
       body: JSON.stringify({ content: 'Hello Hono!' }),
       headers: {
         'Content-Type': 'application/json'
+      }
+    })
+    res.then((r) => {
+      if (!r.ok) {
+        return c.json({ message: 'Failed to send' }, 500)
       }
     })
   } else {
