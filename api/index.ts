@@ -25,6 +25,9 @@ app.get('/crons', (c) => {
       if (!r.ok) {
         return c.json({ message: 'Failed to send' }, 500)
       }
+      if (r.status !== 200) {
+        return c.json({ message: 'Failed to send' }, 500)
+      }
     })
   } else {
     return c.json({ message: 'CRON_URL is not defined' }, 500)
