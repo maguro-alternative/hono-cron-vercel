@@ -20,7 +20,8 @@ app.get('/cron', async(c) => {
       headers: {
         'Content-Type': 'application/json'
       }
-    }).then(() => {
+    }).then((r) => {
+      console.log(r.json())
       return c.json({ message: 'Webhook sent!' })
     }).catch(() => {
       return c.json({ message: 'Failed to send webhook' }, 500)
