@@ -13,6 +13,7 @@ app.get('/cron', (c) => {
     return c.json({ message: 'Unauthorized' }, 401)
   }
   if (process.env.WEBHOOK_URL) {
+    console.log(process.env.WEBHOOK_URL)
     const res = fetch(process.env.WEBHOOK_URL, {
       method: 'POST',
       body: JSON.stringify({ content: 'Hello Hono!' }),
