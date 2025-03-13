@@ -32,7 +32,7 @@ app.get('/cron', async(c) => {
   return c.json({ message: 'Hello Hono!' })
 })
 
-app.get('/hello', (c) => {
+app.get('/hello', async(c) => {
   return c.json({ message: `Hello Hono!` })
 })
 
