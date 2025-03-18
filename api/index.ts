@@ -1,11 +1,13 @@
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 
+import { Hoge } from '../utils/test'
+
 export const config = {
   runtime: 'edge'
 }
 
-const app = new Hono().basePath('/api')
+export const app = new Hono().basePath('/api')
 
 app.get('/cron', async(c) => {
   const Authorization = c.req.header('Authorization')
@@ -14,6 +16,7 @@ app.get('/cron', async(c) => {
   }
   if (process.env.WEBHOOK_URL) {
     const url = new URL(process.env.WEBHOOK_URL)
+    console.log(Hoge);
     await fetch(url, {
       method: 'POST',
       body: JSON.stringify({ content: 'Hello Hono!' }),
