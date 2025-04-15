@@ -2,7 +2,7 @@ import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 
 export const config = {
-  runtime: 'node'
+  runtime: 'nodejs'
 }
 
 export const app = new Hono().basePath('/api')
