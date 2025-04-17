@@ -1,9 +1,7 @@
 import { Hono } from 'hono'
 import { handle } from 'hono/vercel'
 
-export const config = {
-  runtime: 'nodejs'
-}
+export const runtime = 'nodejs'
 
 export const app = new Hono().basePath('/api')
 
