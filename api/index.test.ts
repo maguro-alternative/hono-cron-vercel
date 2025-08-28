@@ -9,6 +9,7 @@ describe('GET /api', () => {
     const response = await app.request('/api/cron');
     expect(response.status).toBe(401);
     expect(await response.json()).toEqual({ message: 'Unauthorized' });
+    console.log(response.body);
     //expect(response.body).toEqual({ message: 'Unauthorized' });
   })
 });
